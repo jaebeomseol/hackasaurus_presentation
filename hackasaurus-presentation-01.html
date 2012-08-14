@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8"/>
+        <meta name = "viewport" content = "user-scalable=no"/> 
+        
+        <title>웹을 만드는 방법</title>  <!-- Sets the title of your presentation on the browser tab -->
+        
+        <script src="http://slides.netfools.com/js/LAB.min.js"></script>
+        <script>
+             $LAB
+            .script("http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js").wait()
+            .script("http://slides.netfools.com/js/sylvester.js")
+            .script("http://slides.netfools.com/js/jquery.animtrans.js").wait()        
+            .script("http://slides.netfools.com/js/purecssmatrix.js").wait()
+            .script("http://slides.netfools.com/js/md5.js")
+            .script("http://slides.netfools.com/js/jquery-impromptu.3.1.min.js")
+            .script("http://slides.netfools.com/js/jquery.zoomooz.js")
+            .script("http://slides.netfools.com/js/jquery.doubletap.js")
+            .script("http://slides.netfools.com/js/jquery.touchwipe.min.js")
+            .script("http://slides.netfools.com/js/slide.control.1.2.js");
+        </script>
+        
+        <link rel="stylesheet" href="http://slides.netfools.com/style/mozilla-slide-themes.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://slides.netfools.com/style/zoomooz.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://slides.netfools.com/style/jqi.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://slides.netfools.com/style/slide-style.css" type="text/css" media="screen">
+        
+        
+        
+        <style type="text/css">
+        
+              /* **************    CSS Classes that define slide background colors    **************** */
+
+            .no-fade  { background-image: none; } /* The no-fade class disables the background fade effect */
+                
+             /* Change these or add your own. */    
+             /* See http://en.wikipedia.org/wiki/List_of_colors */          
+            
+            .red       {background-color: hsl(000,99%,60%)} /* hsl colors are easier to tweak than hex rgb */
+            .orange    {background-color: hsl(030,99%,60%)} /* The first number is the hue */
+            .yellow    {background-color: hsl(060,99%,60%)} /* The second number is the color saturation (intensity) */
+            .chartreuse{background-color: hsl(090,99%,60%)} /* The third number is the lightness */
+
+            .green     {background-color: hsl(120,99%,60%)}
+            .grass     {background-color: hsl(150,99%,60%)}
+            .cyan      {background-color: hsl(180,99%,60%)}
+            .azure     {background-color: hsl(210,99%,60%)}
+            .blue      {background-color: hsl(240,99%,60%)}
+            .purple    {background-color: hsl(270,99%,60%)}
+            .magenta   {background-color: hsl(300,99%,60%)}
+            .rose      {background-color: hsl(330,99%,60%)}
+            
+            .tangerine {background-color: hsl( 33,99%,50%)}
+            .peach       {background-color: hsl( 39,99%,85%)}
+            .plum      {background-color: hsl(300,33%,70%)}
+            .pear      {background-color: hsl( 66,65%,54%)}    
+            
+            .taupe     {background-color: hsl( 25,32%,62%)}
+            .wheat     {background-color: hsl( 39,77%,70%)}                  
+            .ecru      {background-color: hsl( 45,35%,63%)}   
+            .vanilla   {background-color: hsl( 48,75%,81%)}   
+            .pearl       {background-color: hsl( 46,46%,89%)}   
+                                                        
+            .gray       {background-color: hsl( 60,10%,59%)}
+            .ash       {background-color: hsl(135,03%,72%)}
+            .xanadu    {background-color: hsl(136,08%,60%)}
+            .slate     {background-color: hsl(210,13%,30%)}
+                                                
+            .brown       {background-color: hsl( 30,29%,46%)}
+            .copper       {background-color: hsl( 18,61%,63%)}
+            .gold       {background-color: hsl( 50,65%,72%)}
+            .silver    {background-color: hsl(  0,12%,76%)}    
+            
+            .custom1   {background-color: hsl( 58,35%,75%)}  /* Chosen to match the background in the video */
+            .hsOrange  {background-color: hsl( 49,99%,51%)}  /* Hackasaurus Orange */
+            .hsYellow  {background-color: hsl( 60,99%,50%)}  /* Hackasaurus Yellow */
+            .hsBlue    {background-color: hsl(194,89%,75%)}  /* Hackasaurus Goggles Blue */
+            .hsBlue2   {background-color: hsl(210,99%,50%)}  /* Hackasaurus Cape Blue (lightened) */
+          </style>
+        
+    </head>
+    <body>
+        <noscript><h2>자바스크립 작동이 활성화되어 있어야 합니다.</h2></noscript>
+        
+
+        <div id="container" class="theme07"> <!-- Set default theme by changing the class  
+                                                  Press keys 1 through 0 to change theme  
+                                                  Themes are defined in slide-themes.css   -->
+                    
+            <!--*****************************************************************************************
+            *
+            *   To create a new slide make a <div> and give it the slide class and a color class.
+            *
+            *   Examples: 
+            *
+            *         <div class="slide green" >  ..some slide content... </div>
+            *  
+            *       <div class="slide red no-fade>  ...content... </div>
+            *  
+            *       <div class="slide blue break>  ...content... </div>
+            *
+            *   Only colors defined as classes above will work, but you can define your own.
+            *
+            *   The no-fade class disables the background color fade effect.
+            *                        
+            *******************************************************************************************-->
+         
+             
+                <!-- You can make "autosets" of slides from PDFs of presentations.
+                 
+                    To specify a slide autoset, put a set of images files into a
+                    web accessible directory. Name them something like name-01 ... name-XX,
+                    create a div with:  class = "autoset"
+                    id            = a unique name for the set of slides
+                    data-source    = the location of the slides on the web
+                    data-prefix    = the slide name prefix
+                    data-type    = the file type
+                    data-count    = the number of slides in the set
+                    
+                    You can have more than one autoset, and you can freely intermix regular 
+                    slides and autosets.
+                    
+                    To create a directory of slides from a pdf (on a Mac)
+                    1 - Open the pdf in Preview and choose File > Print
+                    2 - Click on the PDF button (at the bottom) and choose Print to iPhoto
+                    3 - Open iPhoto and select the album containing your slides
+                    4 - Choose File > Export and change the File Name dropdown to "Sequential" 
+                -->
+                
+                
+                <!--  Uncomment this example and edit to suit.   Move it anywhere in the sequence
+                        
+                <div class="autoset" id="set01" 
+                    data-source    ="./small" 
+                    data-prefix = "slide-"
+                    data-type    = ".jpg"
+                    data-count    = "60"    
+                ></div>
+                     
+                -->
+         
+         
+               <!--**************************  A Slide   ******************************-->
+        
+                <div class="slide hsOrange" >  
+                    <div class='slideBody'>
+                         <div class='autoBox centerText highlight'>
+                            <br>
+                            <h1>웹을 만드는 방법</h1>
+                            <br>
+                        </div>
+                    </div> 
+                </div>
+                
+                 
+                
+                 <!--**************************  A Slide   ******************************-->
+    
+    
+                <div class="slide hsBlue" >
+                    <h3>핵(hack)이란?</h3>
+                    <br>
+                     <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide2pix.jpg">
+                    </div>
+                </div>
+                
+                
+    
+                <!--**************************  A Slide   ******************************-->
+        
+                <div class="slide hsYellow" >
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size6'
+                            src="http://farm6.static.flickr.com/5223/5776713557_51df159e6b.jpg">
+                    </div>
+                </div>
+
+    
+                                
+            
+                <!--**************************  A Slide   ******************************-->
+                
+                 <div class="slide hsBlue2" >  
+                    <div class='slideBody'>
+                         <div class='autoBox highlight'>
+                            <br>
+                             <h2>무엇이 웹을 멋지게 만드는가?</h2>
+                             <br>
+                        </div>
+                    </div> 
+                </div>
+                
+                
+                
+                <!--**************************  A Slide   ******************************--> 
+
+                <div class="slide hsOrange" >
+                    <h2>참여:</h2>
+                    <h3>어떤 사람의 허락을 받을 필요없이 웹상에서 누구나 참여하거나 도입할 수 있습니다.
+                     <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide5pix.jpg">
+                    </div>
+                </div>
+
+                
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsBlue" >
+                    <h3>여러분은 내용을 보고 이해하고, 재구성하고 새로 만들 수 있습니다.</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide6pix.jpg">
+                    </div>
+                </div>
+        
+                <!--**************************  A Slide   ******************************-->
+                
+                <div class="slide hsYellow" >
+                    <h3>웹은 레고블록처럼 여러가지 구성 요소들로 이루어져 있습니다...</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size6' src="http://slides.netfools.com/images/HSslides1/slide7pix.png">
+                    </div>
+                    <h3>...이 요소들은 여러분이 만든 수많은 것들로 이루어져 있습니다.</h3>
+                </div>
+                
+        
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsBlue2" >
+                    <h3>웹은 재구성을 통해 만들어 졌기 때문에 웹세상은 새로운 것을 만들기 위해 재구성하길 권장합니다.</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size5' src="http://slides.netfools.com/images/HSslides1/slide8pix.jpg">
+                    </div>
+                </div>
+                        
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsOrange" >
+                    <div class='slideBody autoBox highlight'>
+                        <h1 class='center'>왜 코드를 작성하는<br>방법을 알아야 하나요?</h1>
+                    </div>
+                </div>
+                        
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsBlue" >
+                    <h3>여러분은 읽을 수 있는데, 쓰지 못한다는 걸 상상할 수 있나요?</h3><br>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size6' src="http://slides.netfools.com/images/HSslides1/slide10pix.jpg">
+                    </div>
+                </div>
+                        
+        
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsYellow" >
+                    <h3>코드를 읽고 쓰는 방법을 알면, 여러분은 웹세상에 적극적으로 참여할 수 있습니다.</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size6' src="http://slides.netfools.com/images/HSslides1/slide11pix.jpg">
+                    </div>
+                </div>
+                        
+        
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsBlue2" >
+                    <div class='slideBody autoBox highlight'>
+                        <h4>다음 웹브라우저 중 하나를 가지고 있어야 합니다:</h4>
+                        <div class='center'>
+                        <img class='size1' src="http://slides.netfools.com/images/HSslides1/ChromeLogo.png">
+                        <img class='size1' src="http://slides.netfools.com/images/HSslides1/SafariLogo.png">
+                        <img class='size1' src="http://slides.netfools.com/images/HSslides1/FirefoxLogo.png">
+                        <img class='size1' src="http://slides.netfools.com/images/HSslides1/OperaLogo.png">
+                        </div>
+                    </div>
+                </div>
+                        
+        
+                <!--**************************  A Slide   ******************************-->
+    
+                    <div class="slide hsOrange" >
+                    <h3>접속하세요 : www.hackasaurus.org/goggles</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide13pix.png">
+                    </div>
+                </div>
+                        
+                
+                <!--**************************  A Slide   ******************************-->
+    
+                <div class="slide hsBlue" >
+                    <h3>북마크 툴바가 보이는지 확인하세요.:</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <div class=''>
+                        <h3><img class='size1 vCenter' 
+                            src="http://slides.netfools.com/images/HSslides1/FirefoxLogo.png">
+                            &nbsp;보기 > 도구 모음 > 주소창 모음
+                        </h3>
+                        <h3><img class='size1 vCenter' 
+                            src="http://slides.netfools.com/images/HSslides1/SafariLogo.png">
+                            &nbsp;보기 > 책갈피 막대 표시
+                        </h3>
+                        <h3><img class='size1 vCenter' 
+                            src="http://slides.netfools.com/images/HSslides1/ChromeLogo.png">
+                            &nbsp;보기 > 북마크 > 북마크바 표시
+                        </h3>
+                        <h3><img class='size1 vCenter' 
+                            src="http://slides.netfools.com/images/HSslides1/OperaLogo.png">
+                            &nbsp;보기 > 도구 모음 > 즐겨찾기 표시줄 
+                        </h3>
+                        </div>
+                    </div>
+                </div>
+                        
+                        
+                <!--**************************  A Slide   ******************************-->
+    
+                    <div class="slide hsYellow" >
+					<h3>구글을 설치한 후, 재구성하길 원하는 웹페이지를 방문하고 북마크 툴바에 있는 "웹엑스레이고글"을 누르세요</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide15pix.png">
+                    </div>
+                </div>
+                        
+                <!--**************************  A Slide   ******************************-->
+    
+                    <div class="slide hsBlue2" >
+                    <h3>지금, 커서를 웹화면에서 움직이면 여러분은 HTML요소들의 정보를 볼 수 있습니다.</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide16pix.png">
+                    </div>
+                </div>
+                        
+                <!--**************************  A Slide   ******************************-->
+    
+                    <div class="slide hsOrange" >
+                    <h3>재구성하기 위한 창을 열기위해 "R" 키를 누르세요.</h3>
+                    <br>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide17pix.png">
+                    </div>
+                </div>
+
+                <!--**************************  A Slide   ******************************-->
+    
+                    <div class="slide hsBlue" >
+                    <h3>바꾸고 싶은 부분의 코드를 보고 고쳐보세요. pretty뷰는 여러분이 바꾸고 싶은 부분을 편하게 볼 수 있게 해줍니다. 
+                        .  변경이 끝나면 "Ok"를 누르세요.</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide18pix.png">
+                    </div>
+                </div>
+
+                <!--**************************  A Slide   ******************************-->
+    
+                    <div class="slide hsYellow" >
+                    <h3>이제 여러분이 만든 웹사이트를 볼 수 있을겁니다.<br>
+                    "ESC"를 눌러서 고글을 끄거나 "P"를 눌러서 웹페이지를 공유하세요.</h3>
+                    <div class='slideBody autoBox highlight'>
+                        <img class='size7' src="http://slides.netfools.com/images/HSslides1/slide19pix.png">
+                    </div>
+                </div>
+                
+        </div> <!-- end of slide #container -->
+    </body>
+</html>
